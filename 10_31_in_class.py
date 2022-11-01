@@ -6,11 +6,12 @@ import numpy as np
 # Import WHO data set
 who_data = pd.read_csv("WHO_data.csv")
 
+st.header("**The data loaded is:**")
 st.write(who_data)
 
 st.sidebar.header("Pick two variables for your scatterplot")
 
-
+st.header("**Scatter plot and correlation value**")
 x_val = st.sidebar.selectbox("Pick your x-axis",list(who_data.select_dtypes(include=np.number).columns))
 
 if x_val != '':    
@@ -30,4 +31,5 @@ st.altair_chart(scatter1, use_container_width=True)
 
 # calculate the correlation 
 corr_data = round(who_data[x_val].corr(who_data[y_val]),2)
-st.write(f'The correlation between {x_val} and {y_val} is {corr_data}')
+
+st.write(f"_The correlation between {x_val} and {y_val} is {corr_data}_")
